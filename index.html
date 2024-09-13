@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+   
+    <pre id="output"></pre>
+ 
+    <script>
+       
+        var output = document.getElementById("output");
+        var socket = new WebSocket("ws://localhost:8080/log");
+
+        socket.onopen = () => {
+            output.innerHTML += "connected\n";
+        };
+
+        socket.onmessage = (e) => {
+            output.innerHTML += `${e.data}\n`;
+        };
+
+    </script>
+</body>
+
+</html>
